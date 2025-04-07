@@ -242,18 +242,18 @@ img {
 
 }
 
-.menu .box-container {
+.services .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
     gap: 2rem;
     align-items: flex-start;
 }
 
-.menu .box-container .box {
+.services .box-container .box {
     text-align: center;
 }
 
-.menu .box-container .box img {
+.services .box-container .box img {
     height: 12rem;
     margin-bottom: 0.5rem;
     display: block;
@@ -261,13 +261,13 @@ img {
     margin-right: auto;
 }
 
-.menu .box-container .box h3 {
+.services .box-container .box h3 {
     font-size: 2.5rem;
     color: var(--black);
     margin: 1rem 0;
 }
 
-.menu .box-container .box p {
+.services .box-container .box p {
     line-height: 2;
     font-size: 1.4rem;
     color: var(--light-color);
