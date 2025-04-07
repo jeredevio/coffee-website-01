@@ -486,6 +486,10 @@ img {
 
 @media (max-width:768px) {
 
+    section {
+        padding: 5rem 2rem;
+    }
+
     #menu-btn {
         display: inline-block;
     }
