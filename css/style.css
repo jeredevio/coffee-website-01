@@ -1,14 +1,34 @@
+/* ======================================
+   IMPORTS ET POLICES
+====================================== */
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+/* ======================================
+   VARIABLES GLOBALES
+====================================== */
 :root {
+    /* Couleurs */
     --main-color: #be9c79;
     --black: #333;
     --white: #fff;
     --light-color: #666;
+
+    /* Bordures et Ombres */
     --border: .2rem solid var(--black);
     --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .1);
+    --border-radius: 0.8rem;
+
+    /* Transitions et Animations */
+    --transition: 0.3s ease-in-out;
+
+    /* Layout */
+    --section-padding: 8rem 2rem;
+    --container-width: 1200px;
 }
 
+/* ======================================
+   RESET ET BASE STYLES
+====================================== */
 * {
     font-family: "Nunito", sans-serif;
     margin: 0;
@@ -25,6 +45,9 @@
     color: var(--white);
 }
 
+/* ======================================
+   SCROLLBAR
+====================================== */
 ::-webkit-scrollbar {
     height: .5rem;
     width: 1rem;
@@ -36,12 +59,31 @@
 
 ::-webkit-scrollbar-thumb {
     background-color: var(--main-color);
+    border-radius: var(--border-radius);
 }
 
+/* ======================================
+   accessibility
+====================================== */
 :focus-visible {
     outline: 2px solid var(--main-color);
+    outline-offset: 2px;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ======================================
+  base styles html
+====================================== */
 html {
     font-size: 62.5%;
     overflow-x: hidden;
@@ -50,11 +92,14 @@ html {
 }
 
 section {
-    padding: 8rem 2rem;
-    max-width: 1200px;
+    padding: var(--section-padding);
+    max-width: var(--container-width);
     margin: 0 auto;
 }
 
+/* ======================================
+   COMPOSANTS RÉUTILISABLES
+====================================== */
 .heading {
     text-align: center;
     margin-bottom: 2rem;
@@ -66,9 +111,7 @@ section {
 
 .heading img {
     height: 8rem;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
 }
 
 .heading h3 {
@@ -85,14 +128,14 @@ section {
     color: var(--white);
     font-size: 1.8rem;
     padding: 1rem 3rem;
-    border-radius: .8rem;
+    border-radius: var(--border-radius);
+    transition: all var(--transition);
 }
 
 .btn:hover {
     background-color: var(--black);
-    color: var(--white);
-    transform: scale(1.05);
-    transition: 0.2s ease;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 img {
@@ -101,6 +144,9 @@ img {
     display: block;
 }
 
+/* ======================================
+   HEADER
+====================================== */
 .header {
     position: sticky;
     top: 0;
@@ -109,6 +155,7 @@ img {
     background-color: var(--white);
     box-shadow: var(--box-shadow);
     z-index: 1000;
+    will-change: transform;
 }
 
 .header .flex {
@@ -130,7 +177,6 @@ img {
     display: flex;
     align-items: center;
     gap: 1rem;
-    text-decoration: none;
 }
 
 .logo span {
@@ -144,12 +190,12 @@ img {
     margin: 0 1rem;
     font-size: 1.5rem;
     color: var(--black);
-    transition: color 0.2s ease, text-decoration 0.2s ease;
+    transition: all var(--transition);
 }
 
 .header .flex .navbar a:hover {
-    text-decoration: underline;
     color: var(--main-color);
+    text-decoration: underline;
 }
 
 #menu-btn {
@@ -157,14 +203,16 @@ img {
     font-size: 2.5rem;
     color: var(--black);
     cursor: pointer;
+    transition: all var(--transition);
 }
 
 #menu-btn:hover {
     color: var(--main-color);
-    transform: scale(1.05);
-    transition: 0.2s ease;
 }
 
+/* ======================================
+   SECTION HOME
+====================================== */
 .home-bg {
     background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(167, 167, 167, 0.2) 100%), url(../assets/images/bg.jpeg) no-repeat;
     background-size: cover;
@@ -182,7 +230,7 @@ img {
     background-color: rgba(255, 255, 255, 0.502);
     backdrop-filter: blur(5px);
     padding: 4rem;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
     max-width: 60rem;
     text-align: left;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
@@ -203,6 +251,9 @@ img {
     line-height: 2;
 }
 
+/* ======================================
+   SECTION ABOUT
+====================================== */
 .about {
     display: flex;
     align-items: center;
@@ -245,9 +296,11 @@ img {
     line-height: 2;
     color: var(--light-color);
     font-size: 1.5rem;
-
 }
 
+/* ======================================
+   SECTION SERVICES
+====================================== */
 .services .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
@@ -264,8 +317,8 @@ img {
     height: 12rem;
     margin-bottom: 0.5rem;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
+    /* Centrer l'image */
 }
 
 .services .box-container .box h3 {
@@ -280,6 +333,9 @@ img {
     color: var(--light-color);
 }
 
+/* ======================================
+   SECTION MENU
+====================================== */
 .menu .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
@@ -309,6 +365,9 @@ img {
     margin: 1rem 10rem;
 }
 
+/* ======================================
+   SECTION GALERIE
+====================================== */
 .gallery .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
@@ -320,9 +379,17 @@ img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
+    transition: transform var(--transition);
 }
 
+.gallery .box-container img:hover {
+    transform: scale(1.03);
+}
+
+/* ======================================
+   SECTION TEAM
+====================================== */
 .team .box-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, 33rem);
@@ -340,7 +407,7 @@ img {
     height: 100%;
     object-fit: cover;
     margin-bottom: 1rem;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
 }
 
 .team .box h3 {
@@ -349,6 +416,9 @@ img {
     margin: 1rem 0;
 }
 
+/* ======================================
+   SECTION CONTACT
+====================================== */
 .contact .row {
     display: flex;
     align-items: center;
@@ -369,7 +439,7 @@ img {
     border: var(--border);
     padding: 2rem;
     text-align: center;
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
 }
 
 .contact .row form h3 {
@@ -386,11 +456,24 @@ img {
     color: var(--black);
     border: var(--border);
     margin: 1rem 0;
-    border-radius: .8rem;
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition);
 }
 
+.contact .row form .box:focus {
+    border-color: var(--main-color);
+}
+
+.contact .row form .box::placeholder {
+    color: var(--light-color);
+    opacity: 0.7;
+}
+
+/* ======================================
+   FOOTER
+====================================== */
 .footer {
-    max-width: 1200px;
+    max-width: var(--container-width);
     margin: 0 auto;
     padding: 5rem 2rem 3rem;
 }
@@ -416,6 +499,11 @@ img {
     color: var(--white);
     background-color: var(--main-color);
     margin-bottom: 1rem;
+    transition: transform var(--transition);
+}
+
+.footer .box-container .box i:hover {
+    transform: translateY(-5px);
 }
 
 .footer .box-container .box h3 {
@@ -443,28 +531,9 @@ img {
     color: var(--main-color);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* media queries */
-
+/* ======================================
+   MEDIA QUERIES
+====================================== */
 @media (max-width: 991px) {
 
     html {
@@ -610,5 +679,25 @@ img {
 
     .heading h3 {
         font-size: 3rem;
+    }
+}
+
+/* ======================================
+   user preferences
+====================================== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+@media (hover: hover) {
+    .btn:hover {
+        transform: translateY(-3px);
+    }
+
+    .header .flex .navbar a:hover {
+        color: var(--main-color);
     }
 }
